@@ -19,7 +19,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install --legacy-peer-deps
+          cd user-service && npm install --legacy-peer-deps
+          cd ../order-service && npm install --legacy-peer-dep
 
       - name: Run SonarCloud Scan
         uses: sonarsource/sonarqube-scan-action@v2
