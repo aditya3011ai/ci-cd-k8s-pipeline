@@ -1,0 +1,38 @@
+# name: CI/CD with SonarCloud
+
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
+
+# jobs:
+#   sonarcloud-scan:
+#     name: Analyze with SonarCloud
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         service: [user-service, order-service]
+
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v3
+
+#     - name: Set up Node.js
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: 18
+
+#     - name: Install dependencies
+#       run: |
+#         cd ${{ matrix.service }}
+#         npm install
+
+#     - name: Run SonarCloud Scan
+#       uses: sonarsource/sonarcloud-github-action@v2
+#       with:
+#         projectBaseDir: ./${{ matrix.service }}
+#       env:
+#         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
